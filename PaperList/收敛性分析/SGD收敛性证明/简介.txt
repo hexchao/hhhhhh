@@ -1,0 +1,49 @@
+Convergence Results and Optimal Averaging Schemes：
+个人思路整理，先证强凸、光滑条件下的GD，然后再改变条件研究SGD的收敛性
+
+Optimization Methods for Large-Scale Machine Learning
+bottou的证明，p20-47，不需要递减步长，
+
+SGD and Hogwild! Convergence Without the Bounded Gradients Assumption
+递减步长下SGD的收敛性分析，有Hogwild但没有MF。附14页的证明
+
+Projected Gradient Methods for Nonnegative Matrix Factorization
+递减步长下，GD做矩阵分解的分析，证明不多
+
+Making Gradient Descent Optimal for Strongly Convex Stochastic Optimization
+研究了在凸和非凸的状态下SGD的收敛能不能从O(log(T)/T)到O(1/T)，似乎是递减步长
+
+Stochastic Gradient Descent for Non-smooth Optimization Convergence Results and Optimal Averaging Schemes
+递减步长下非光滑SGD能不能达到O(log(T)=T)的收敛性
+
+Almost sure convergence of a stochastic approximation process in a convex set
+随机渐进序列在凸集上的收敛性，听着参考性不大
+
+
+【误差以一个概率小于一个数值】
+Global Convergence of Stochastic Gradient Descent for Some Non-convex Matrix Problems（A=XX）
+Th1，P25
+直接利用对称矩阵的性质推得概率，看起来可靠性不高
+
+Guaranteed Matrix Completion via Non-Convex Factorization
+之前看过的，基于局部几何性
+P11，6545，Ⅲ.main result, Th3.1（Th3.2顺便证线性收敛）
+
+Provable Efficient Online Matrix Completion via Non-convex Stochastic Gradient Descent（2016）
+Th3.3 但借用了SVD方法而且是online的，主体部分基本可用
+supp为上一篇的证明部分
+
+Fast Exact Matrix Completion with Finite Samples（2015）
+Provable的前一篇，占比重较大。详细说明了样本量，条件数等收敛因子。其中还包括更早几年的引用
+用奇异值投影（SVP）更新矩阵，只做matrix completion，不做matrix factorization。
+条件依然是那两个：1.u-incoherence，2.Omega个数（Omega有限个，早于后期的online learning）
+
+Exact matrix completion via convex optimization
+Fast Exact的前一篇，算是概率收敛证明的母本，但可用内容比较少
+
+User-Friendly Tail Bounds for Sums of Random Matrice
+supp 中Bernstein不等式的一个出处
+
+
+
+

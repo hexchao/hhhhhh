@@ -1,0 +1,50 @@
+《Asynchronous Byzantine Machine Learning (the case of SGD)》
+分布式异步SGD算法对抗恶意节点，Krum的合作者写的。
+
+《Byzantine Stochastic Gradient Descent》
+提出了一种算法（ByzantineSGD），并分析了它的运行效率和抵抗能力
+恶意节点容忍度<1/2
+
+《Byzantine-Tolerant Machine Learning》
+（是《Machine Learning with Adversaries Byzantine Tolerant Gradient Descent》的完善版本）
+提出Krum并说明线性聚合方式对于抵抗攻击是无效的
+提出并应用(α, f)-Byzantine resilience，证明Krum的收敛性（聚合方式有基于聚合和基于多数，krum属于基于多数）
+另外，证明了收敛的计算时间为O(n2 · (d + log n))，n是节点数量，d是特征维数
+
+《Distributed Statistical Machine Learning in Adversarial Settings: Byzantine Gradient Descent》
+较早的一篇（2017），分析了几何中值做抵抗时的算法复杂度
+证明（依概率）一致收敛，参数以一定的误差在O(logN)次迭代收敛
+一个特点：节点极多，做中值操作之前还需要先mini-batch
+恶意节点容忍度：2(1 + ε )q ≤ m 
+
+《Federated Machine Learning: Concept and Applications》
+杨强的联邦学习
+
+《Generalized Byzantine-tolerant SGD》
+基于(α, f)-Byzantine resilience的理论，证明了几何中值等三种中值方法的收敛性
+另外也提到了计算开销的复杂度问题
+
+《Machine Learning with Adversaries Byzantine Tolerant Gradient Descent》
+（《Byzantine-Tolerant Machine Learning》的初期版本）
+提出了Krum，并简述了(α，f)收敛性，更偏向于sketch，附有部分证明
+
+《SGD: Decentralized Byzantine Resilience》
+GUANYU：异步更新，容忍1/3的恶意节点
+基于(α, f)-Byzantine resilient的Gradient Aggregation Rules (GARs)
+提到了一些攻击方法，可以参考。另外作为写作指导也很不错
+
+《Zeno: Byzantine-suspicious stochastic gradientdescent》
+第一个证明了Byzantine节点数量多的时候也能收敛：majority-based algorithms可能会失败，suspicion-based algorithm能够解决这个问题
+从限制方差的角度来证明
+基于方法的证明，暂时不用看
+
+《Resilient Distributed Optimization Algorithms for Resource Allocation》
+提出基于resilient primal-dual的方法，将一种恢复均值点的聚合方法与primal-dual data resource allocation（PD-DRA）方法结合起来，依然是有中心的结构，Byzantine节点<1/2
+
+《Adversary-resilient Inference and Machine Learning: From Distributed to Decentralized》
+关于中心化和去中心化结构的Byzantine攻击和抵抗做了一个综述，可参考的文章较多
+
+《Fall of Empires Breaking Byzantine-tolerant SGD by Inner Product Manipulation》
+证明在inner production manipulation攻击下coordinate-wise median和Krum方法可能是不可靠的。
+“基本想法是当接近最优解时，正常节点的平均随机梯度接近于0，那么即使median和krum能够保证聚合结果离正常节点的平均随机梯度很近，方向也有可能是相反的”
+最后文章提出需要修改关于Byzantine Tolerance的定义（Definition 4. (DSSGD-Byzantine Tolerance)）

@@ -1,50 +1,52 @@
-¡¶Asynchronous Byzantine Machine Learning (the case of SGD)¡·
-·Ö²¼Ê½Òì²½SGDËã·¨¶Ô¿¹¶ñÒâ½Úµã£¬KrumµÄºÏ×÷ÕßĞ´µÄ¡£
+ã€ŠAsynchronous Byzantine Machine Learning (the case of SGD)ã€‹
+åˆ†å¸ƒå¼å¼‚æ­¥SGDç®—æ³•å¯¹æŠ—æ¶æ„èŠ‚ç‚¹ï¼ŒKrumçš„åˆä½œè€…å†™çš„ã€‚
 
-¡¶Byzantine Stochastic Gradient Descent¡·
-Ìá³öÁËÒ»ÖÖËã·¨£¨ByzantineSGD£©£¬²¢·ÖÎöÁËËüµÄÔËĞĞĞ§ÂÊºÍµÖ¿¹ÄÜÁ¦
-¶ñÒâ½ÚµãÈİÈÌ¶È<1/2
+ã€ŠByzantine Stochastic Gradient Descentã€‹
+æå‡ºäº†ä¸€ç§ç®—æ³•ï¼ˆByzantineSGDï¼‰ï¼Œå¹¶åˆ†æäº†å®ƒçš„è¿è¡Œæ•ˆç‡å’ŒæŠµæŠ—èƒ½åŠ›
+æ¶æ„èŠ‚ç‚¹å®¹å¿åº¦<1/2
 
-¡¶Byzantine-Tolerant Machine Learning¡·
-£¨ÊÇ¡¶Machine Learning with Adversaries Byzantine Tolerant Gradient Descent¡·µÄÍêÉÆ°æ±¾£©
-Ìá³öKrum²¢ËµÃ÷ÏßĞÔ¾ÛºÏ·½Ê½¶ÔÓÚµÖ¿¹¹¥»÷ÊÇÎŞĞ§µÄ
-Ìá³ö²¢Ó¦ÓÃ(¦Á, f)-Byzantine resilience£¬Ö¤Ã÷KrumµÄÊÕÁ²ĞÔ£¨¾ÛºÏ·½Ê½ÓĞ»ùÓÚ¾ÛºÏºÍ»ùÓÚ¶àÊı£¬krumÊôÓÚ»ùÓÚ¶àÊı£©
-ÁíÍâ£¬Ö¤Ã÷ÁËÊÕÁ²µÄ¼ÆËãÊ±¼äÎªO(n2 ¡¤ (d + log n))£¬nÊÇ½ÚµãÊıÁ¿£¬dÊÇÌØÕ÷Î¬Êı
+ã€ŠByzantine-Tolerant Machine Learningã€‹
+ï¼ˆæ˜¯ã€ŠMachine Learning with Adversaries Byzantine Tolerant Gradient Descentã€‹çš„å®Œå–„ç‰ˆæœ¬ï¼‰
+æå‡ºKrumå¹¶è¯´æ˜çº¿æ€§èšåˆæ–¹å¼å¯¹äºæŠµæŠ—æ”»å‡»æ˜¯æ— æ•ˆçš„
+æå‡ºå¹¶åº”ç”¨(Î±, f)-Byzantine resilienceï¼Œè¯æ˜Krumçš„æ”¶æ•›æ€§ï¼ˆèšåˆæ–¹å¼æœ‰åŸºäºèšåˆå’ŒåŸºäºå¤šæ•°ï¼Œkrumå±äºåŸºäºå¤šæ•°ï¼‰
+å¦å¤–ï¼Œè¯æ˜äº†æ”¶æ•›çš„è®¡ç®—æ—¶é—´ä¸ºO(n2 Â· (d + log n))ï¼Œnæ˜¯èŠ‚ç‚¹æ•°é‡ï¼Œdæ˜¯ç‰¹å¾ç»´æ•°
 
-¡¶Distributed Statistical Machine Learning in Adversarial Settings: Byzantine Gradient Descent¡·
-½ÏÔçµÄÒ»Æª£¨2017£©£¬·ÖÎöÁË¼¸ºÎÖĞÖµ×öµÖ¿¹Ê±µÄËã·¨¸´ÔÓ¶È
-Ö¤Ã÷£¨ÒÀ¸ÅÂÊ£©Ò»ÖÂÊÕÁ²£¬²ÎÊıÒÔÒ»¶¨µÄÎó²îÔÚO(logN)´Îµü´úÊÕÁ²
-Ò»¸öÌØµã£º½Úµã¼«¶à£¬×öÖĞÖµ²Ù×÷Ö®Ç°»¹ĞèÒªÏÈmini-batch
-¶ñÒâ½ÚµãÈİÈÌ¶È£º2(1 + ¦Å )q ¡Ü m 
+ã€ŠDistributed Statistical Machine Learning in Adversarial Settings: Byzantine Gradient Descentã€‹
+è¾ƒæ—©çš„ä¸€ç¯‡ï¼ˆ2017ï¼‰ï¼Œåˆ†æäº†å‡ ä½•ä¸­å€¼åšæŠµæŠ—æ—¶çš„ç®—æ³•å¤æ‚åº¦
+è¯æ˜ï¼ˆä¾æ¦‚ç‡ï¼‰ä¸€è‡´æ”¶æ•›ï¼Œå‚æ•°ä»¥ä¸€å®šçš„è¯¯å·®åœ¨O(logN)æ¬¡è¿­ä»£æ”¶æ•›
+ä¸€ä¸ªç‰¹ç‚¹ï¼šèŠ‚ç‚¹æå¤šï¼Œåšä¸­å€¼æ“ä½œä¹‹å‰è¿˜éœ€è¦å…ˆmini-batch
+æ¶æ„èŠ‚ç‚¹å®¹å¿åº¦ï¼š2(1 + Îµ )q â‰¤ m 
 
-¡¶Federated Machine Learning: Concept and Applications¡·
-ÑîÇ¿µÄÁª°îÑ§Ï°
+ã€ŠFederated Machine Learning: Concept and Applicationsã€‹
+æ¨å¼ºçš„è”é‚¦å­¦ä¹ 
 
-¡¶Generalized Byzantine-tolerant SGD¡·
-»ùÓÚ(¦Á, f)-Byzantine resilienceµÄÀíÂÛ£¬Ö¤Ã÷ÁË¼¸ºÎÖĞÖµµÈÈıÖÖÖĞÖµ·½·¨µÄÊÕÁ²ĞÔ
-ÁíÍâÒ²Ìáµ½ÁË¼ÆËã¿ªÏúµÄ¸´ÔÓ¶ÈÎÊÌâ
+ã€ŠGeneralized Byzantine-tolerant SGDã€‹
+åŸºäº(Î±, f)-Byzantine resilienceçš„ç†è®ºï¼Œè¯æ˜äº†å‡ ä½•ä¸­å€¼ç­‰ä¸‰ç§ä¸­å€¼æ–¹æ³•çš„æ”¶æ•›æ€§
+å¦å¤–ä¹Ÿæåˆ°äº†è®¡ç®—å¼€é”€çš„å¤æ‚åº¦é—®é¢˜
 
-¡¶Machine Learning with Adversaries Byzantine Tolerant Gradient Descent¡·
-£¨¡¶Byzantine-Tolerant Machine Learning¡·µÄ³õÆÚ°æ±¾£©
-Ìá³öÁËKrum£¬²¢¼òÊöÁË(¦Á£¬f)ÊÕÁ²ĞÔ£¬¸üÆ«ÏòÓÚsketch£¬¸½ÓĞ²¿·ÖÖ¤Ã÷
+ã€ŠMachine Learning with Adversaries Byzantine Tolerant Gradient Descentã€‹
+ï¼ˆã€ŠByzantine-Tolerant Machine Learningã€‹çš„åˆæœŸç‰ˆæœ¬ï¼‰
+æå‡ºäº†Krumï¼Œå¹¶ç®€è¿°äº†(Î±ï¼Œf)æ”¶æ•›æ€§ï¼Œæ›´åå‘äºsketchï¼Œé™„æœ‰éƒ¨åˆ†è¯æ˜
 
-¡¶SGD: Decentralized Byzantine Resilience¡·
-GUANYU£ºÒì²½¸üĞÂ£¬ÈİÈÌ1/3µÄ¶ñÒâ½Úµã
-»ùÓÚ(¦Á, f)-Byzantine resilientµÄGradient Aggregation Rules (GARs)
-Ìáµ½ÁËÒ»Ğ©¹¥»÷·½·¨£¬¿ÉÒÔ²Î¿¼¡£ÁíÍâ×÷ÎªĞ´×÷Ö¸µ¼Ò²ºÜ²»´í
+ã€ŠSGD: Decentralized Byzantine Resilienceã€‹
+GUANYUï¼šå¼‚æ­¥æ›´æ–°ï¼Œå®¹å¿1/3çš„æ¶æ„èŠ‚ç‚¹
+åŸºäº(Î±, f)-Byzantine resilientçš„Gradient Aggregation Rules (GARs)
+æåˆ°äº†ä¸€äº›æ”»å‡»æ–¹æ³•ï¼Œå¯ä»¥å‚è€ƒã€‚å¦å¤–ä½œä¸ºå†™ä½œæŒ‡å¯¼ä¹Ÿå¾ˆä¸é”™
 
-¡¶Zeno: Byzantine-suspicious stochastic gradientdescent¡·
-µÚÒ»¸öÖ¤Ã÷ÁËByzantine½ÚµãÊıÁ¿¶àµÄÊ±ºòÒ²ÄÜÊÕÁ²£ºmajority-based algorithms¿ÉÄÜ»áÊ§°Ü£¬suspicion-based algorithmÄÜ¹»½â¾öÕâ¸öÎÊÌâ
-´ÓÏŞÖÆ·½²îµÄ½Ç¶ÈÀ´Ö¤Ã÷
-»ùÓÚ·½·¨µÄÖ¤Ã÷£¬ÔİÊ±²»ÓÃ¿´
+ã€ŠZeno: Byzantine-suspicious stochastic gradientdescentã€‹
+ç¬¬ä¸€ä¸ªè¯æ˜äº†ByzantineèŠ‚ç‚¹æ•°é‡å¤šçš„æ—¶å€™ä¹Ÿèƒ½æ”¶æ•›ï¼šmajority-based algorithmså¯èƒ½ä¼šå¤±è´¥ï¼Œsuspicion-based algorithmèƒ½å¤Ÿè§£å†³è¿™ä¸ªé—®é¢˜
+ä»é™åˆ¶æ–¹å·®çš„è§’åº¦æ¥è¯æ˜
+åŸºäºæ–¹æ³•çš„è¯æ˜ï¼Œæš‚æ—¶ä¸ç”¨çœ‹
+æ³¨ï¼š
+æœ¬æ–‡æå‡ºçš„ç®—æ³•åŸºäºä¸€ä¸ªå‡è®¾ï¼šbyzantineèŠ‚ç‚¹åœ¨æ”»å‡»æ—¶ä¸çŸ¥é“æ­£å¸¸èŠ‚ç‚¹ä¸Šä¼ çš„æ¢¯åº¦
 
-¡¶Resilient Distributed Optimization Algorithms for Resource Allocation¡·
-Ìá³ö»ùÓÚresilient primal-dualµÄ·½·¨£¬½«Ò»ÖÖ»Ö¸´¾ùÖµµãµÄ¾ÛºÏ·½·¨Óëprimal-dual data resource allocation£¨PD-DRA£©·½·¨½áºÏÆğÀ´£¬ÒÀÈ»ÊÇÓĞÖĞĞÄµÄ½á¹¹£¬Byzantine½Úµã<1/2
+ã€ŠResilient Distributed Optimization Algorithms for Resource Allocationã€‹
+æå‡ºåŸºäºresilient primal-dualçš„æ–¹æ³•ï¼Œå°†ä¸€ç§æ¢å¤å‡å€¼ç‚¹çš„èšåˆæ–¹æ³•ä¸primal-dual data resource allocationï¼ˆPD-DRAï¼‰æ–¹æ³•ç»“åˆèµ·æ¥ï¼Œä¾ç„¶æ˜¯æœ‰ä¸­å¿ƒçš„ç»“æ„ï¼ŒByzantineèŠ‚ç‚¹<1/2
 
-¡¶Adversary-resilient Inference and Machine Learning: From Distributed to Decentralized¡·
-¹ØÓÚÖĞĞÄ»¯ºÍÈ¥ÖĞĞÄ»¯½á¹¹µÄByzantine¹¥»÷ºÍµÖ¿¹×öÁËÒ»¸ö×ÛÊö£¬¿É²Î¿¼µÄÎÄÕÂ½Ï¶à
+ã€ŠAdversary-resilient Inference and Machine Learning: From Distributed to Decentralizedã€‹
+å…³äºä¸­å¿ƒåŒ–å’Œå»ä¸­å¿ƒåŒ–ç»“æ„çš„Byzantineæ”»å‡»å’ŒæŠµæŠ—åšäº†ä¸€ä¸ªç»¼è¿°ï¼Œå¯å‚è€ƒçš„æ–‡ç« è¾ƒå¤š
 
-¡¶Fall of Empires Breaking Byzantine-tolerant SGD by Inner Product Manipulation¡·
-Ö¤Ã÷ÔÚinner production manipulation¹¥»÷ÏÂcoordinate-wise medianºÍKrum·½·¨¿ÉÄÜÊÇ²»¿É¿¿µÄ¡£
-¡°»ù±¾Ïë·¨ÊÇµ±½Ó½ü×îÓÅ½âÊ±£¬Õı³£½ÚµãµÄÆ½¾ùËæ»úÌİ¶È½Ó½üÓÚ0£¬ÄÇÃ´¼´Ê¹medianºÍkrumÄÜ¹»±£Ö¤¾ÛºÏ½á¹ûÀëÕı³£½ÚµãµÄÆ½¾ùËæ»úÌİ¶ÈºÜ½ü£¬·½ÏòÒ²ÓĞ¿ÉÄÜÊÇÏà·´µÄ¡±
-×îºóÎÄÕÂÌá³öĞèÒªĞŞ¸Ä¹ØÓÚByzantine ToleranceµÄ¶¨Òå£¨Definition 4. (DSSGD-Byzantine Tolerance)£©
+ã€ŠFall of Empires Breaking Byzantine-tolerant SGD by Inner Product Manipulationã€‹
+è¯æ˜åœ¨inner production manipulationæ”»å‡»ä¸‹coordinate-wise medianå’ŒKrumæ–¹æ³•å¯èƒ½æ˜¯ä¸å¯é çš„ã€‚
+â€œåŸºæœ¬æƒ³æ³•æ˜¯å½“æ¥è¿‘æœ€ä¼˜è§£æ—¶ï¼Œæ­£å¸¸èŠ‚ç‚¹çš„å¹³å‡éšæœºæ¢¯åº¦æ¥è¿‘äº0ï¼Œé‚£ä¹ˆå³ä½¿medianå’Œkrumèƒ½å¤Ÿä¿è¯èšåˆç»“æœç¦»æ­£å¸¸èŠ‚ç‚¹çš„å¹³å‡éšæœºæ¢¯åº¦å¾ˆè¿‘ï¼Œæ–¹å‘ä¹Ÿæœ‰å¯èƒ½æ˜¯ç›¸åçš„â€
+æœ€åæ–‡ç« æå‡ºéœ€è¦ä¿®æ”¹å…³äºByzantine Toleranceçš„å®šä¹‰ï¼ˆDefinition 4. (DSSGD-Byzantine Tolerance)ï¼‰

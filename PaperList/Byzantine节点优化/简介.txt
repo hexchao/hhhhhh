@@ -50,3 +50,7 @@ GUANYU：异步更新，容忍1/3的恶意节点
 证明在inner production manipulation攻击下coordinate-wise median和Krum方法可能是不可靠的。
 “基本想法是当接近最优解时，正常节点的平均随机梯度接近于0，那么即使median和krum能够保证聚合结果离正常节点的平均随机梯度很近，方向也有可能是相反的”
 最后文章提出需要修改关于Byzantine Tolerance的定义（Definition 4. (DSSGD-Byzantine Tolerance)）
+
+《Robust federated learning in a heterogeneous environment》
+在数据是非iid的情况下（Heterogeneous），通过cluster解决联邦学习中的Byzantine攻击问题。
+从统计意义上证明了Lloyds算法的可靠性（Lloyds与k-means有一些区别，但文中似乎没有区分）

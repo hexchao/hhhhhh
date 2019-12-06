@@ -50,3 +50,8 @@ GUANYU：异步更新，容忍1/3的恶意节点
 证明在inner production manipulation攻击下coordinate-wise median和Krum方法可能是不可靠的。
 “基本想法是当接近最优解时，正常节点的平均随机梯度接近于0，那么即使median和krum能够保证聚合结果离正常节点的平均随机梯度很近，方向也有可能是相反的”
 最后文章提出需要修改关于Byzantine Tolerance的定义（Definition 4. (DSSGD-Byzantine Tolerance)）
+
+《Mitigating Sybils in Federated Learning Poisoning》
+女巫攻击的抵抗。在上面大部分Byzantine resilience文章中，恶意节点的数量不超过一定数量几乎是一项必然要求，但实际中，恶意用户可以试图创建多个属于自己的节点，轻而易举地攻破上面majority based的算法。这种攻击方式就叫女巫攻击。
+研究女巫攻击的文章不多，这里补充一篇，文章提出了FoolsGold算法。然而这篇文章抵抗女巫攻击的立足点是在城市节点的Non-IID性质和女巫攻击节点的相似性上。诚实节点返回信息不相似，女巫节点之间非常相似，因而可以设法把他们分辨开来。
+理论上这种方式和原来的要求恶意节点不能太多的要求并没有什么不同。对城市节点充分Non-IID的要求限制了算法可用性。该文仅供参考。

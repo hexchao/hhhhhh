@@ -66,3 +66,9 @@ Krum和GeoMed抵抗攻击能力都强烈依赖于诚实节点之间梯度的一�
 在数据是非iid的情况下（Heterogeneous），通过cluster解决联邦学习中的Byzantine攻击问题。
 从统计意义上证明了Lloyds算法的可靠性（Lloyds与k-means有一些区别，但文中似乎没有区分）
 
+《Local Model Poisoning Attacks to Byzantine-Robust Federated Learning》
+1、这篇文章主要的想法是设计特定的攻击方式，使得现有鲁棒算法学到的模型往错误的方向走。思路与Cong Xie, Sanmi Koyejo, and Indranil Gupta. Fall of empires: Breaking byzantine-tolerant sgd by inner product manipulation这篇文章很接近。
+2、作者区分了data poisoning attack与local model poisoning attack。个人觉得，在用基于SGD的算法时，这两种攻击差距不大。
+3、这篇文章最大的问题是假设数据不是i.i.d.的。从图三可以看出来，大部分鲁棒算法（除了Krum）在i.i.d.情况下表现都不错，但non-i.i.d.情况下性能就下降很快。说明作者没有认真的研究现有鲁棒算法的基本假设。
+4、这篇文章还设计了两种防御方法，基本思路是在中心节点引入额外的测试样本帮助识别可能的恶意攻击。本质上可以认为是一种利用redundant data抵抗攻击的方法，但复杂度比较高。
+

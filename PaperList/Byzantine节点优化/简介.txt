@@ -51,6 +51,7 @@ GUANYU：异步更新，容忍1/3的恶意节点
 “基本想法是当接近最优解时，正常节点的平均随机梯度接近于0，那么即使median和krum能够保证聚合结果离正常节点的平均随机梯度很近，方向也有可能是相反的”
 最后文章提出需要修改关于Byzantine Tolerance的定义（Definition 4. (DSSGD-Byzantine Tolerance)）
 
+
 《The Hidden Vulnerability of Distributed Learning in Byzantium》
 提出一种针对Krum和Geometric Median等基于范数的鲁棒聚合算法的攻击以及对应的防御算法Bulyan。
 Krum和GeoMed抵抗攻击能力都强烈依赖于诚实节点之间梯度的一致性。当诚实节点间梯度不一致时，这种分歧会留给攻击者一定的操作空间。文章构造的这种攻击就是利用这种分歧掩盖这种攻击，并在所留下的操作空间里尝试控制最终的聚合结果，这种攻击对Krum和GeoMed破坏力极大。
@@ -60,3 +61,8 @@ Krum和GeoMed抵抗攻击能力都强烈依赖于诚实节点之间梯度的一�
 女巫攻击的抵抗。在上面大部分Byzantine resilience文章中，恶意节点的数量不超过一定数量几乎是一项必然要求，但实际中，恶意用户可以试图创建多个属于自己的节点，轻而易举地攻破上面majority based的算法。这种攻击方式就叫女巫攻击。
 研究女巫攻击的文章不多，这里补充一篇，文章提出了FoolsGold算法。然而这篇文章抵抗女巫攻击的立足点是在城市节点的Non-IID性质和女巫攻击节点的相似性上。诚实节点返回信息不相似，女巫节点之间非常相似，因而可以设法把他们分辨开来。
 理论上这种方式和原来的要求恶意节点不能太多的要求并没有什么不同。对城市节点充分Non-IID的要求限制了算法可用性。该文仅供参考。
+
+《Robust federated learning in a heterogeneous environment》
+在数据是非iid的情况下（Heterogeneous），通过cluster解决联邦学习中的Byzantine攻击问题。
+从统计意义上证明了Lloyds算法的可靠性（Lloyds与k-means有一些区别，但文中似乎没有区分）
+

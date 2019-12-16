@@ -72,3 +72,14 @@ Krum和GeoMed抵抗攻击能力都强烈依赖于诚实节点之间梯度的一�
 3、这篇文章最大的问题是假设数据不是i.i.d.的。从图三可以看出来，大部分鲁棒算法（除了Krum）在i.i.d.情况下表现都不错，但non-i.i.d.情况下性能就下降很快。说明作者没有认真的研究现有鲁棒算法的基本假设。
 4、这篇文章还设计了两种防御方法，基本思路是在中心节点引入额外的测试样本帮助识别可能的恶意攻击。本质上可以认为是一种利用redundant data抵抗攻击的方法，但复杂度比较高。
 
+《Abnormal Client Behavior Detection in Federated Learning》（微众银行）
+在联邦学习中，当用户上传的中心服务器的权重受到攻击时，detection-based的方法比传统的defense-based方法更加有效（本文使用的是Autoencoder-Based异常检测）。使用credit score来代替原权重计算中的各节点数据点比例，credit score由异常检测模型的anomaly score给出。
+
+《Distributed Optimization Under Adversarial Nodes》
+无中心的分布式优化问题
+1.证明了不存在“既能在无攻击情况下找到最优解，又能抵御设计好的攻击”的算法
+2.介绍了Local Filtering (LF) Dynamics这种consensus-based的分布式优化协议，并研究了F-local和F-total在不同攻击下的表现情况
+3.在一定条件下，未遭受攻击的节点能够收敛到他们本地目标函数的最小值的凸包内
+4. Maximum F-local sets的规模越大，算法安全性越差；The size of themaximum F-local sets是一个NP-hard问题。
+
+

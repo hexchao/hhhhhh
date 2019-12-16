@@ -1,11 +1,17 @@
-��Secure Federated Matrix Factorization������ǿ���Ŷӣ�
-������ѧϰ���ھ���ֽ������ϣ�������ش��ݶȲ����Ա�����˽��
-ʹ����Homomorphic Encryption�������иĽ�
+《Secure Federated Matrix Factorization》（杨强的团队）
+将联邦学习用在矩阵分解问题上，并提出回传梯度不足以保护隐私。
+使用了Homomorphic Encryption方法进行改进
 
 
-��Federated PCA with Adaptive Rank Estimation��
-���նˣ��������ݣ��ڵ�Ĵ洢�ͼ����������޵�ʱ����ι��ƾ������r���Լ��ٿ�����
-����������Ҫ�ο�sec3��lemma1�ж����ݷֿ����SVD�ֽ��QR�ֽ���뷨
+《Federated PCA with Adaptive Rank Estimation》
+在终端（产生数据）节点的存储和计算能力有限的时候，如何估计矩阵的秩r，以减少开销。
+用在这里主要参考sec3和lemma1中对数据分块进行SVD分解和QR分解的想法
 
 
+《Nonconvex Optimization Meets Low-Rank Matrix Factorization An Overview》
+对于Matrix sensing、Phase retrieval and quadratic sensing、Matrix completion、Blind deconvolution、robust PCA这几个经典的非凸问题，从Local refinement、梯度下降、初始值和全局性等方面做了分析和总结。（最后在9.3中也提到了鞍点的问题）
 
+《Distributed Low-rank Matrix Factorization With Exact Consensus》
+同时也属于GD的并行问题。
+目标函数为各个节点的子目标函数之和，通过函数的连续性，证明分布式的GD在解决矩阵分解问题时一定能收敛。
+讨论了局部最优、全局最优、鞍点这些critical point的问题。

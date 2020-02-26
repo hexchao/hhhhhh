@@ -7,6 +7,12 @@
 《Asynchronous Byzantine Machine Learning (the case of SGD)》
 分布式异步SGD算法对抗恶意节点，Krum的合作者写的。
 
+《BYZANTINE-RESILIENT DECENTRALIZED LEARNING》
+一篇无中心的抵抗Byzantine攻击的博士论文，主要分析了三种Byzantine-resilient方法：
+1.收到邻居节点的信息后，先使用SVM做二分类筛选再进行计算
+2.Empirical Risk Minimization (ERM)问题在Byzantine网络中无法被exactly solved，但是本文提出的Byzantine-Resilient Decentralized coordinate dEscent (ByRDiE)能够在统计上实现probably and approximately correct (PAC)  Learnable.
+3.ByRDiE需要scalar sorting process，不适用于向量和矩阵情况，因此引入梯度下降Byzantine-resilient decentralized gradient descent (BRIDGE)
+
 《Byzantine Stochastic Gradient Descent》
 提出了一种算法（ByzantineSGD），并分析了它的运行效率和抵抗能力
 恶意节点容忍度<1/2
@@ -78,6 +84,16 @@ GUANYU：异步更新，容忍1/3的恶意节点
 提出一种针对Krum和Geometric Median等基于范数的鲁棒聚合算法的攻击以及对应的防御算法Bulyan。
 Krum和GeoMed抵抗攻击能力都强烈依赖于诚实节点之间梯度的一致性。当诚实节点间梯度不一致时，这种分歧会留给攻击者一定的操作空间。文章构造的这种攻击就是利用这种分歧掩盖这种攻击，并在所留下的操作空间里尝试控制最终的聚合结果，这种攻击对Krum和GeoMed破坏力极大。
 文章提出Bulyan算法，可以看作Krum和GeoMed的堆叠版本。算法先计算通常的Krum和GeoMed，选出梯度集合里最靠近聚合结果的梯度，拿出来并记录，多次重复。对这些拿出来的梯度进行简单平均，就是聚合算法Bulyan。
+
+《Towards Byzantine-resilient Learning in Decentralized Systems》
+无中心情况下的Byzantine问题。提出了MOZI（墨子）聚合方法，该方法对Byzantine的节点数不作要求（甚至是可变的）。
+在有中心的情况下，Byzantine-resilient方法主要分为基于距离（Distance-based solutions）和目标函数（Performance-based Solutions）两种类型。现有的去中心化Byzantine-resilient方法大多是基于距离做聚合，对特定的攻击抵抗力较弱（Mhamdi[20],[25],[26]）。
+在迭代过程中，各节点使用邻居节点的aggregation和该节点的目标函数负梯度来更新。
+本文使用的是aggregation算法MOZI的思路是：
+1.基于距离在邻居节点中选出可能的好节点集合
+2.基于目标函数表现再选一次（不需要另外准备测试集，依然使用训练数据）
+注：
+有收敛性分析，但没有看到关于Byzantine节点数量任意性的分析（如果过半，第一步就垮了）
 
 《Zeno: Byzantine-suspicious stochastic gradientdescent》
 第一个证明了Byzantine节点数量多的时候也能收敛：majority-based algorithms可能会失败，suspicion-based algorithm能够解决这个问题

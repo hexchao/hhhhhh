@@ -23,6 +23,10 @@
 提出并应用(α, f)-Byzantine resilience，证明Krum的收敛性（聚合方式有基于聚合和基于多数，krum属于基于多数）
 另外，证明了收敛的计算时间为O(n2 · (d + log n))，n是节点数量，d是特征维数
 
+《Distributed Momentum for Byzantine-resilient Learning》
+在有中心的网络节点中，worker使用动量能够减少主节点收到的好节点的variance-norm ratio，增强聚合鲁棒性。
+ Momentum consists in summing a series of past gradients with the new one using an exponential decay factor μ (0 < μ < 1), instead of using the new gradient alone.
+
 《Distributed Optimization Under Adversarial Nodes》
 无中心的分布式优化问题
 1.证明了不存在“既能在无攻击情况下找到最优解，又能抵御设计好的攻击”的算法

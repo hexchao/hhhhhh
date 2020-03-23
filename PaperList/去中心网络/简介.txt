@@ -1,0 +1,3 @@
+《Byzantine-Resilient Distributed Optimization of multi-dimensional functions》
+确定性优化问题。
+In this paper, we propose a resilient distributed optimization algorithm for multi- dimensional convex functions. Our scheme involves two filtering steps at each iteration of the algorithm: (1) distance-based and (2) component-wise removal of extreme states.

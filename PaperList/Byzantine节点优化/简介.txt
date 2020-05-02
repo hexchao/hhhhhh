@@ -23,6 +23,14 @@
 提出并应用(α, f)-Byzantine resilience，证明Krum的收敛性（聚合方式有基于聚合和基于多数，krum属于基于多数）
 另外，证明了收敛的计算时间为O(n2 · (d + log n))，n是节点数量，d是特征维数
 
+《Distributed Byzantine Tolerant Stochastic Gradient Descent in the Era of Big Data》
+提出了两种不限制恶意节点数量上限（45/50依然有效）的Byzantine tolerant SGD算法。
+当恶意节点数上界p已知时：
+计算节点收集离自己距离最近的N-p-1个节点的参数，取均值后用来更新自己的参数（更新后需要加归一化步骤）
+当恶意节点数上界p已知时：
+选择离自己足够近且参数下降方向一致的节点的参数，取均值后更新。
+（一个想法：每轮迭代节点选择时需要所有节点间参数共享，中心节点通讯压力较大？）
+
 《Distributed Momentum for Byzantine-resilient Learning》
 在有中心的网络节点中，worker使用动量能够减少主节点收到的好节点的variance-norm ratio，增强聚合鲁棒性。
  Momentum consists in summing a series of past gradients with the new one using an exponential decay factor μ (0 < μ < 1), instead of using the new gradient alone.
@@ -72,6 +80,10 @@
 研究女巫攻击的文章不多，这里补充一篇，文章提出了FoolsGold算法。然而这篇文章抵抗女巫攻击的立足点是在城市节点的Non-IID性质和女巫攻击节点的相似性上。诚实节点返回信息不相似，女巫节点之间非常相似，因而可以设法把他们分辨开来。
 理论上这种方式和原来的要求恶意节点不能太多的要求并没有什么不同。对城市节点充分Non-IID的要求限制了算法可用性。该文仅供参考。
 
+《On the Design of Communication Efficient Federated Learning over Wireless Networks》
+在SignSGD中，模型表现依赖于两个因素：1.有限时间内的信息交互轮数（信息交换速度）；2.信息交互时的中断概率。
+本文研究了两个tradeoff：1.单轮信息交互的时间给定时，中断概率和能耗的tradeoff；2.能耗给定时，信息交互轮数和中断概率的tradeoff。
+
 《Resilient Distributed Optimization Algorithms for Resource Allocation》
 提出基于resilient primal-dual的方法，将一种恢复均值点的聚合方法与primal-dual data resource allocation（PD-DRA）方法结合起来，依然是有中心的结构，Byzantine节点<1/2
 
@@ -83,6 +95,10 @@
 GUANYU：异步更新，容忍1/3的恶意节点
 基于(α, f)-Byzantine resilient的Gradient Aggregation Rules (GARs)
 提到了一些攻击方法，可以参考。另外作为写作指导也很不错
+
+《Stochastic-Sign SGD for Federated Learning with Theoretical Guarantees》
+Sign SGD在每轮迭代的主从节点信息交换中只传递梯度符号和aggregation值，效率很高但是在异质的分布下不收敛。本文提出的stochastic-sign SGD和 differentially private sign SGD算法可以在异质数据分布下也达到收敛的效果，而且收敛率与同质情况相同。
+（作者金日成Sign SGD相关论文还有两篇：Distributed Byzantine Tolerant Stochastic Gradient Descent in the Era of Big Data 和 On the Design of Communication Efficient Federated Learning over Wireless Networks）
 
 《The Hidden Vulnerability of Distributed Learning in Byzantium》
 提出一种针对Krum和Geometric Median等基于范数的鲁棒聚合算法的攻击以及对应的防御算法Bulyan。

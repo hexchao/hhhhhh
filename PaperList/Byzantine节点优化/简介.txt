@@ -4,14 +4,34 @@
 《Adversary-resilient Inference and Machine Learning: From Distributed to Decentralized》
 关于中心化和去中心化结构的Byzantine攻击和抵抗做了一个综述，可参考的文章较多
 
+《Adversary-Resilient Distributed and Decentralized Statistical Inference and Machine Learning》
+有中心和无中心分布式的综述，列举了常见的抵抗攻击的方法。
+
 《Asynchronous Byzantine Machine Learning (the case of SGD)》
 分布式异步SGD算法对抗恶意节点，Krum的合作者写的。
+
+《Byzantine Fault-Tolerant Distributed Machine Learning Using Stochastic Gradient Descent (SGD) and Norm-Based Comparative Gradient Elimination (CGE)》
+有中心的分布式SGD，i.i.d
+抵抗方式：基于范数的梯度过滤，comparative gradient elimination (CGE)，加和范数最小的n-f个梯度
 
 《BYZANTINE-RESILIENT DECENTRALIZED LEARNING》
 一篇无中心的抵抗Byzantine攻击的博士论文，主要分析了三种Byzantine-resilient方法：
 1.收到邻居节点的信息后，先使用SVM做二分类筛选再进行计算
 2.Empirical Risk Minimization (ERM)问题在Byzantine网络中无法被exactly solved，但是本文提出的Byzantine-Resilient Decentralized coordinate dEscent (ByRDiE)能够在统计上实现probably and approximately correct (PAC)  Learnable.
 3.ByRDiE需要scalar sorting process，不适用于向量和矩阵情况，因此引入梯度下降Byzantine-resilient decentralized gradient descent (BRIDGE)
+
+《Byzantine-Resilient Multi-Agent Optimization》
+引入 (β,γ)–admissibility来评价无中心分布式网络的Byzantine-resilience
+
+《Byzantine-Resilient Secure Federated Learning》
+Byzantine-resilient secure aggregation(BREA)特点：
+i) robustness of the trained model against up to A Byzantine adversaries, 
+ii) tolerance against up to D user dropouts, iii) privacy of each local model, against the server and up to T colluding users, as long asN≥2A+1+max{m+2,D+2T},where m is the number of selected models for aggregation.
+
+《Byzantine-Robust Learning on Heterogeneous Datasets via Resampling》
+有中心的分布式，non-iid
+1.设计了新的攻击来绕过防御（normalized gradient和mimic可以利用数据异构性绕过中值方法和符号聚合方法）
+2.将重采样与原有鲁棒算法结合抵抗攻击
 
 《Byzantine Stochastic Gradient Descent》
 提出了一种算法（ByzantineSGD），并分析了它的运行效率和抵抗能力
@@ -35,6 +55,10 @@
 在有中心的网络节点中，worker使用动量能够减少主节点收到的好节点的variance-norm ratio，增强聚合鲁棒性。
  Momentum consists in summing a series of past gradients with the new one using an exponential decay factor μ (0 < μ < 1), instead of using the new gradient alone.
 
+《Distributed Newton Can Communicate Less and Resist Byzantine Workers》
+有中心，高效沟通的分布式二阶优化算法，COMRADE (COMunication-efficient and Robust Approximate Distributed nEwton)。worker先压缩信息再发送（梯度和Hessian矩阵），每个worker每次迭代只向中心节点发送一次信息。
+抵抗方式：基于范数的梯度过滤（对范数最小的一部分梯度取均值）
+
 《Distributed Optimization Under Adversarial Nodes》
 无中心的分布式优化问题
 1.证明了不存在“既能在无攻击情况下找到最优解，又能抵御设计好的攻击”的算法
@@ -48,10 +72,21 @@
 一个特点：节点极多，做中值操作之前还需要先mini-batch
 恶意节点容忍度：2(1 + ε )q ≤ m 
 
+《Dynamic Federated Learning Model for Identifying Adversarial Clients》
+通过动态地判断恶意节点并摒除恶意节点信息提高模型训练效果并减轻训练代价。
+原理：（Induced Ordered Weighted Averaging (IOWA) operator）根据对聚合过程中每个节点的贡献做加权。
+
 《Fall of Empires Breaking Byzantine-tolerant SGD by Inner Product Manipulation》
 证明在inner production manipulation攻击下coordinate-wise median和Krum方法可能是不可靠的。
 “基本想法是当接近最优解时，正常节点的平均随机梯度接近于0，那么即使median和krum能够保证聚合结果离正常节点的平均随机梯度很近，方向也有可能是相反的”
 最后文章提出需要修改关于Byzantine Tolerance的定义（Definition 4. (DSSGD-Byzantine Tolerance)）
+
+《Fault-Tolerance in Distributed Optimization: The Case of Redundancy》
+有中心、无中心情况都有考虑。
+只有当好节点有minimal redundancy性质时，才能最小化好节点之间的aggregate cost
+[2f-redundancy] For a given set of non-faulty agents H, their non-faulty cost functions are said to satisfy 2f - redundancy if for every subset S ⊆ H of size at least n − 2f ,
+argmin 􏰵\sum_{i∈S} Q_i(w) = argmin 􏰵 􏰵\sum_{i∈H} Q_i(w).
+抵抗方式：comparative gradient clipping (CGC)
 
 《Federated Machine Learning: Concept and Applications》
 杨强的联邦学习
@@ -59,6 +94,10 @@
 《Generalized Byzantine-tolerant SGD》
 基于(α, f)-Byzantine resilience的理论，证明了几何中值等三种中值方法的收敛性
 另外也提到了计算开销的复杂度问题
+
+《Holdout SGD: Byzantine Tolerant Federated Learning》
+有中心、无中心情况都有考虑。（适用于恶意节点<1/3情况）
+HoldOut SGD先随机选择一部分worker用本地数据更新梯度，再随机选择一部分worker用本地数据投票。
 
 《Learning to Detect Malicious Clients for Robust Federated Learning》
 本文用标准SGD更新，假设恶意攻击是加入i.i.d.的noise，使用spectral anomaly detection方法来检测出恶意节点，更新时移除一定数量的恶意节点。
@@ -80,6 +119,14 @@
 研究女巫攻击的文章不多，这里补充一篇，文章提出了FoolsGold算法。然而这篇文章抵抗女巫攻击的立足点是在城市节点的Non-IID性质和女巫攻击节点的相似性上。诚实节点返回信息不相似，女巫节点之间非常相似，因而可以设法把他们分辨开来。
 理论上这种方式和原来的要求恶意节点不能太多的要求并没有什么不同。对城市节点充分Non-IID的要求限制了算法可用性。该文仅供参考。
 
+《ON DISTRIBUTED STOCHASTIC GRADIENT DESCENT FOR NONCONVEX FUNCTIONS IN THE PRESENCE OF BYZANTINES》
+有中心的分布式SGD，α < 1/2，可用于非凸目标函数
+设计了一个新的方法来抵抗Byzantine攻击：
+g_{t+1} = { i∈g_{t} :|A_{i}^(t) −A_{med}^(t) | ≤ 4M^2 T ∩ ||∇_{i,t} − ∇_med|| ≤ 4v }
+其中
+A_{i}^(t) = sum_{t} 􏰓⟨∇_{i,t} ,∇_{0,t} ⟩
+A_{med}^(t) = med{A_{1}^(t),...,A_{w}^(t)}
+
 《On the Design of Communication Efficient Federated Learning over Wireless Networks》
 在SignSGD中，模型表现依赖于两个因素：1.有限时间内的信息交互轮数（信息交换速度）；2.信息交互时的中断概率。
 本文研究了两个tradeoff：1.单轮信息交互的时间给定时，中断概率和能耗的tradeoff；2.能耗给定时，信息交互轮数和中断概率的tradeoff。
@@ -87,9 +134,17 @@
 《Resilient Distributed Optimization Algorithms for Resource Allocation》
 提出基于resilient primal-dual的方法，将一种恢复均值点的聚合方法与primal-dual data resource allocation（PD-DRA）方法结合起来，依然是有中心的结构，Byzantine节点<1/2
 
+《Resilient Multi-Robot Target Pursuit》
+无中心情况，可以忍受n个邻居中[n/d-1] − 1个恶意节点
+抵抗方式：基于中心点的，高维空间的广义中值算法，好节点可以保证把中心点落在它的好邻居的凸包内。
+
 《Robust federated learning in a heterogeneous environment》
 在数据是非iid的情况下（Heterogeneous），通过cluster解决联邦学习中的Byzantine攻击问题。
 从统计意义上证明了Lloyds算法的可靠性（Lloyds与k-means有一些区别，但文中似乎没有区分）
+
+《Secure Byzantine-Robust Machine Learning》
+在有Byzantine攻击的分布式问题下，提出了 two-server protocol.
+secure aggregation rule + two non-colluding honest-but-curious servers
 
 《SGD: Decentralized Byzantine Resilience》
 GUANYU：异步更新，容忍1/3的恶意节点

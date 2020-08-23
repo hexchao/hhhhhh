@@ -1,0 +1,8 @@
+An Efficient Framework for Clustered Federated Learning
+联邦学习，non-iid
+Iterative Federated Clustering Algorithm (IFCA)：每轮迭代中，各worker找到令子目标函数最小的聚类中心点，用该点求梯度，之后中心节点更新聚类中心。
+在理论分析中，基于严格的初始化条件可以达到指数收敛，在实验中可以放宽初始条件，还可以解决神经网络之类的非凸问题。
+
+CSER: Communication-efficient SGD with Error Reset
+提出了CSER概念，Error Reset适用于SGD的任意压缩算子，能够生成分叉局部模型，并对产生的局部残差进行周期性重置。另，证明了CSER在光滑非凸问题上的收敛性。
+对局部模型的重置误差增加一个压缩，调整压缩比例可以提高收敛率。在合适的压缩比例下，CSER不会导致精度损失而且能提高训练效率。

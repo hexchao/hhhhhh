@@ -12,7 +12,7 @@
 
 《Byzantine Fault-Tolerant Distributed Machine Learning Using Stochastic Gradient Descent (SGD) and Norm-Based Comparative Gradient Elimination (CGE)》
 有中心的分布式SGD，i.i.d
-抵抗方式：基于范数的梯度过滤，comparative gradient elimination (CGE)，加和范数最小的n-f个梯度
+提出了一种新的鲁棒聚合方法：comparative gradient elimination (CGE)，中心节点收到n个随机梯度，去掉欧式范数最大的f个随机梯度，用剩下n-f个梯度做aggregation（这里用的是均值）
 
 《BYZANTINE-RESILIENT DECENTRALIZED LEARNING》
 一篇无中心的抵抗Byzantine攻击的博士论文，主要分析了三种Byzantine-resilient方法：
@@ -96,8 +96,11 @@ argmin 􏰵\sum_{i∈S} Q_i(w) = argmin 􏰵 􏰵\sum_{i∈H} Q_i(w).
 另外也提到了计算开销的复杂度问题
 
 《Holdout SGD: Byzantine Tolerant Federated Learning》
-有中心、无中心情况都有考虑。（适用于恶意节点<1/3情况）
-HoldOut SGD先随机选择一部分worker用本地数据更新梯度，再随机选择一部分worker用本地数据投票。
+1.从所有节点中，随机抽P个用来计算梯度，随机抽C个用来投票
+2.P个节点算出各自的随机梯度后发给中心节点，中心节点把收到的随机梯度发送给C个投票节点，每个投票节点把收到的P个随机梯度带入自己节点的损失函数做计算，然后把“P·(1-f) 个损失函数最小的随机梯度”对应的节点作为自己的投票结果返回给中心节点
+3.中心节点收到C个投票节点的投票结果（对P投票），在投票结果中取交集，用这些随机梯度的均值更新
+无中心、有中心情况都有讨论。无中心模式下算法更复杂一点
+Byzantine节点要求：有中心<1/2，无中心<1/3
 
 《Learning to Detect Malicious Clients for Robust Federated Learning》
 本文用标准SGD更新，假设恶意攻击是加入i.i.d.的noise，使用spectral anomaly detection方法来检测出恶意节点，更新时移除一定数量的恶意节点。

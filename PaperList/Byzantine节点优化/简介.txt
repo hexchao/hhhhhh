@@ -14,6 +14,9 @@
 有中心的分布式SGD，i.i.d
 提出了一种新的鲁棒聚合方法：comparative gradient elimination (CGE)，中心节点收到n个随机梯度，去掉欧式范数最大的f个随机梯度，用剩下n-f个梯度做aggregation（这里用的是均值）
 
+《Byzantine Fault-Tolerant Parallelized Stochastic Gradient Descent for Linear Regression》
+使用comparative gradient clipping (CGC)来提供算法鲁棒性。在有中心的网络中，每次把最大的f个（假设知道恶意节点数f）梯度做clipping操作：保留原梯度方向，但是scaler是第f+1个梯度的大小。其它梯度不变，聚合方法还是均值。
+
 《BYZANTINE-RESILIENT DECENTRALIZED LEARNING》
 一篇无中心的抵抗Byzantine攻击的博士论文，主要分析了三种Byzantine-resilient方法：
 1.收到邻居节点的信息后，先使用SVM做二分类筛选再进行计算

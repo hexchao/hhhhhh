@@ -1,3 +1,7 @@
+《A Little Is Enough: Circumventing Defenses For Distributed Learning》
+即使是iid数据，本文提出的方法也能在不会被检测出异常的范围内，针对不同的聚合方式制造扰动攻击（并且是non-omniscient攻击）和Backdoor Attack，降低模型准确性或者收敛性。
+因为假设了正态和独立同分布，所以不需要知道其它节点的数据，知道本节点的数据就足够推断均值和标准差了。
+
 《Abnormal Client Behavior Detection in Federated Learning》（微众银行）
 在联邦学习中，当用户上传的中心服务器的权重受到攻击时，detection-based的方法比传统的defense-based方法更加有效（本文使用的是Autoencoder-Based异常检测）。使用credit score来代替原权重计算中的各节点数据点比例，credit score由异常检测模型的anomaly score给出。
 
@@ -7,8 +11,17 @@
 《Adversary-Resilient Distributed and Decentralized Statistical Inference and Machine Learning》
 有中心和无中心分布式的综述，列举了常见的抵抗攻击的方法。
 
+《AKSEL: Fast Byzantine SGD》
+提出了median-based的聚合方法，Aksel。这种方法时间复杂度较低，对恶意节点的容忍程度是n>2f，同时，聚合后的梯度与真实梯度之间的Angular error也更小。
+
+《Approximate Byzantine Fault-Tolerance in Distributed Optimization》
+相对于exact fault-tolerance的概念而言，提出了更加宽松的approximate fault-tolerance在得到近似最优解。（(f, ε)-resilience）
+
 《Asynchronous Byzantine Machine Learning (the case of SGD)》
 分布式异步SGD算法对抗恶意节点，Krum的合作者写的。
+
+《Auto-weighted Robust Federated Learning with Corrupted Data Sources》
+Auto-weighted Robust Federated Learning (ARFL)：通过比较每个节点的经验风险与最佳的p个节点的平均经验风险（p-average）来分配权重，可以降低损失明显更高的节点的权重，从而降低他们对全局模型的贡献
 
 《Byzantine Fault-Tolerant Distributed Machine Learning Using Stochastic Gradient Descent (SGD) and Norm-Based Comparative Gradient Elimination (CGE)》
 有中心的分布式SGD，i.i.d
@@ -25,6 +38,9 @@
 
 《Byzantine-Resilient Multi-Agent Optimization》
 引入 (β,γ)–admissibility来评价无中心分布式网络的Byzantine-resilience
+
+《Byzantine Resilient Non-Convex SVRG with Distributed Batch Gradient Computations》
+在有Byzantine节点的有中心分布式网络中，基于SVRG提出了分布式的SCSG算法来解决非凸问题
 
 《Byzantine-Resilient Secure Federated Learning》
 Byzantine-resilient secure aggregation(BREA)特点：
@@ -46,6 +62,9 @@ ii) tolerance against up to D user dropouts, iii) privacy of each local model, a
 提出并应用(α, f)-Byzantine resilience，证明Krum的收敛性（聚合方式有基于聚合和基于多数，krum属于基于多数）
 另外，证明了收敛的计算时间为O(n2 · (d + log n))，n是节点数量，d是特征维数
 
+《Detection and Isolation of Adversaries in Decentralized Optimization for Non-Strongly Convex Objectives》
+针对非强凸目标优化问题，提出了一种检测和隔离恶意节点的去中心鲁棒算法：decentralized robust subgradient push (RSGP)（基于Push-Sum）
+
 《Distributed Byzantine Tolerant Stochastic Gradient Descent in the Era of Big Data》
 提出了两种不限制恶意节点数量上限（45/50依然有效）的Byzantine tolerant SGD算法。
 当恶意节点数上界p已知时：
@@ -53,6 +72,9 @@ ii) tolerance against up to D user dropouts, iii) privacy of each local model, a
 当恶意节点数上界p已知时：
 选择离自己足够近且参数下降方向一致的节点的参数，取均值后更新。
 （一个想法：每轮迭代节点选择时需要所有节点间参数共享，中心节点通讯压力较大？）
+
+《DETOX: A Redundancy-based Framework for Faster and More Robust Gradient Aggregation》
+（有中心）DETOX结合了算法冗余robust aggregation和鲁棒聚合algorithmic redundancy，分为两个步骤：1.filtering step，用冗余来削弱恶意节点的影响，2.hierarchical aggregation step，与sota的鲁棒聚合方法结合。其中第二步也有两个小步骤，首先将过滤后的梯度划分为少量组进行聚合，然后对平均梯度使用鲁棒聚合以进一步最小化拜占庭梯度的剩余痕迹影响
 
 《Distributed Momentum for Byzantine-resilient Learning》
 在有中心的网络节点中，worker使用动量能够减少主节点收到的好节点的variance-norm ratio，增强聚合鲁棒性。
@@ -83,6 +105,12 @@ ii) tolerance against up to D user dropouts, iii) privacy of each local model, a
 证明在inner production manipulation攻击下coordinate-wise median和Krum方法可能是不可靠的。
 “基本想法是当接近最优解时，正常节点的平均随机梯度接近于0，那么即使median和krum能够保证聚合结果离正常节点的平均随机梯度很近，方向也有可能是相反的”
 最后文章提出需要修改关于Byzantine Tolerance的定义（Definition 4. (DSSGD-Byzantine Tolerance)）
+
+《Fast Machine Learning with Byzantine Workers and Servers》
+（”刘备“算法，之前有过关羽和张飞了）
+1.假设所有节点和服务器均不可信
+2.与non-Byzantine resilient algorithms相比，不产生额外的通信轮次
+3.本文机制：建立在梯度聚合规则（GAR）上来抵抗攻击，通过从worker节点的副本中过滤出信息（从多台机器上复制参数服务器，但不信任这些服务器）
 
 《Fault-Tolerance in Distributed Optimization: The Case of Redundancy》
 有中心、无中心情况都有考虑。

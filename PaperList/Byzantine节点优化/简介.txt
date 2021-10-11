@@ -1,3 +1,9 @@
+《A Survey of Federated Learning for Edge Computing: Research Problems and Solutions》
+边缘计算应用场景的一个survey。（有提到攻击和压缩）
+
+《A Survey on Fault-tolerance in Distributed Optimization and Machine Learning》
+对有中心和无中心的恶意节点数容忍情况做了一个survey，比较主流的一些对比算法都在里面了
+
 《A Little Is Enough: Circumventing Defenses For Distributed Learning》
 即使是iid数据，本文提出的方法也能在不会被检测出异常的范围内，针对不同的聚合方式制造扰动攻击（并且是non-omniscient攻击）和Backdoor Attack，降低模型准确性或者收敛性。
 因为假设了正态和独立同分布，所以不需要知道其它节点的数据，知道本节点的数据就足够推断均值和标准差了。
@@ -23,9 +29,19 @@
 《Auto-weighted Robust Federated Learning with Corrupted Data Sources》
 Auto-weighted Robust Federated Learning (ARFL)：通过比较每个节点的经验风险与最佳的p个节点的平均经验风险（p-average）来分配权重，可以降低损失明显更高的节点的权重，从而降低他们对全局模型的贡献
 
+《BASGD: Buffered Asynchronous SGD for Byzantine Learning》
+创新点：研究了异步的Byzantine Learning问题。（此前唯二两篇文章，Kardam无法抵抗攻击，Zeno++需要在中心预存数据）
+基础的ASGD看不出来亮点，进阶的Buffered操作：节点被分组，提交的梯度先存在一个Buffer中聚合。
+
 《Byzantine Fault-Tolerant Distributed Machine Learning Using Stochastic Gradient Descent (SGD) and Norm-Based Comparative Gradient Elimination (CGE)》
 有中心的分布式SGD，i.i.d
 提出了一种新的鲁棒聚合方法：comparative gradient elimination (CGE)，中心节点收到n个随机梯度，去掉欧式范数最大的f个随机梯度，用剩下n-f个梯度做aggregation（这里用的是均值）
+
+《Byzantine Fault-Tolerance in Federated Local SGD under 2f-Redundancy》
+11里面把恶意节点比例和条件数联系起来的式子倒是第一次见
+这是证明里为了保证descent引入的一个条件。29式
+点评一下：一，算法很简单，把差距最大的f个模型扔掉。不过倒是第一次有人做local sgd的鲁棒性。二，2f redundancy本质上是在说每个节点的数据是一样的，这个假设有点强。在确定情况底下，这个算法可以精确收敛。在随机情况下，算法会收敛到跟方差成正比的小邻域里。事实上这个方差可以用vr消掉。
+不一定有足够的新意，只是胜在简单
 
 《Byzantine Fault-Tolerant Parallelized Stochastic Gradient Descent for Linear Regression》
 使用comparative gradient clipping (CGC)来提供算法鲁棒性。在有中心的网络中，每次把最大的f个（假设知道恶意节点数f）梯度做clipping操作：保留原梯度方向，但是scaler是第f+1个梯度的大小。其它梯度不变，聚合方法还是均值。
@@ -65,6 +81,11 @@ ii) tolerance against up to D user dropouts, iii) privacy of each local model, a
 《Detection and Isolation of Adversaries in Decentralized Optimization for Non-Strongly Convex Objectives》
 针对非强凸目标优化问题，提出了一种检测和隔离恶意节点的去中心鲁棒算法：decentralized robust subgradient push (RSGP)（基于Push-Sum）
 
+《Distributed Approximate Newton's Method Robust to Byzantine Attackers》
+大多数方法都是抵抗一阶攻击（梯度），这篇文章提出了两个抵抗二阶攻击的方法。
+1.median-based approximate Newton's method (MNM)（中心节点做几何中值聚合）
+2.comparison-based approximate Newton's method (CNM)（中心节点保留一些干净的数据，计算参数之后用来filter out）
+
 《Distributed Byzantine Tolerant Stochastic Gradient Descent in the Era of Big Data》
 提出了两种不限制恶意节点数量上限（45/50依然有效）的Byzantine tolerant SGD算法。
 当恶意节点数上界p已知时：
@@ -100,6 +121,16 @@ ii) tolerance against up to D user dropouts, iii) privacy of each local model, a
 《Dynamic Federated Learning Model for Identifying Adversarial Clients》
 通过动态地判断恶意节点并摒除恶意节点信息提高模型训练效果并减轻训练代价。
 原理：（Induced Ordered Weighted Averaging (IOWA) operator）根据对聚合过程中每个节点的贡献做加权。
+
+《EF21: A New, Simpler, Theoretically Better, and Practically Faster Error Feedback》
+目前关于Error feedback (EF)的研究大多有以下局限性：1.只适用于单点，2.假设过强（比如全局梯度有界或者迭代依赖性的假设），3.无偏压缩算子（增加通信成本）。
+EF21（2021年提出）能够在基础假设下达到𝑂(1/𝑇)的收敛率，并且适用于异构数据。算法思路跟gradient tracking有点像
+
+《Exploiting Heterogeneity in Robust Federated Best-Arm Identification》
+Non-IID+multi-armed bandits
+Fed-SEL机制：
+1.每个client在本地arm-set找到最好的arm
+2.中心节点与本地节点通信，找到最好的arm
 
 《Fall of Empires Breaking Byzantine-tolerant SGD by Inner Product Manipulation》
 证明在inner production manipulation攻击下coordinate-wise median和Krum方法可能是不可靠的。
@@ -179,9 +210,16 @@ A_{med}^(t) = med{A_{1}^(t),...,A_{w}^(t)}
 无中心情况，可以忍受n个邻居中[n/d-1] − 1个恶意节点
 抵抗方式：基于中心点的，高维空间的广义中值算法，好节点可以保证把中心点落在它的好邻居的凸包内。
 
+《Robust Distributed Optimization With Randomly Corrupted Gradients》
+Robust Averaging Normalized Gradient Method (RANGE)算法步骤：1) Temporal gradient averaging, 2) robust aggregation, and 3) gradient normalization
+适用场景：novel Markovian Byzantine agent model（攻击节点数量是不确定的，每个节点都可能是攻击结点）
+
 《Robust federated learning in a heterogeneous environment》
 在数据是非iid的情况下（Heterogeneous），通过cluster解决联邦学习中的Byzantine攻击问题。
 从统计意义上证明了Lloyds算法的可靠性（Lloyds与k-means有一些区别，但文中似乎没有区分）
+
+《Robust Training in High Dimensions via Block Coordinate Geometric Median Descent》
+用几何中值（GM）来做鲁棒聚合太耗时，这篇文章用a judiciously chosen block of coordinates+a memory mechanism来节省开销，同时达成普通GM在SGD上的非渐进收敛率（1/2恶意节点，光滑非凸问题）
 
 《Secure Byzantine-Robust Machine Learning》
 在有Byzantine攻击的分布式问题下，提出了 two-server protocol.
@@ -191,6 +229,10 @@ secure aggregation rule + two non-colluding honest-but-curious servers
 GUANYU：异步更新，容忍1/3的恶意节点
 基于(α, f)-Byzantine resilient的Gradient Aggregation Rules (GARs)
 提到了一些攻击方法，可以参考。另外作为写作指导也很不错
+
+《SignGuard - Byzantine-robust Federated Learning through Collaborative Malicious Gradient Filtering》
+算法思路：1.对每个节点的梯度计算模长中位数，只要中位数附近的节点。2.对梯度做element-wise的index抽样，只取sign信息，用Mean-Shift聚类方法选择节点集合。取1和2的交集，算均值做aggregation
+两点：Non-IID，可以抵抗“Little is Enough”攻击，列出了七种攻击方式（可以参考）
 
 《Stochastic-Sign SGD for Federated Learning with Theoretical Guarantees》
 Sign SGD在每轮迭代的主从节点信息交换中只传递梯度符号和aggregation值，效率很高但是在异质的分布下不收敛。本文提出的stochastic-sign SGD和 differentially private sign SGD算法可以在异质数据分布下也达到收敛的效果，而且收敛率与同质情况相同。
